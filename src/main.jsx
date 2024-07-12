@@ -6,11 +6,30 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import Root from './routes/root.jsx'
+import About from './routes/about.jsx'
 import './index.css'
+import Center from './routes/center.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>
+    element: <Root/>,
+    children:[
+      {
+        path:'/about',
+        element : <About/>
+      },
+      
+        {
+          path:'/home',
+          element : <Center/>
+        },
+        {
+          path:'/',
+          element : <Center/>
+        },
+      
+
+    ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
