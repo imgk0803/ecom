@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header(){
 
     return(
@@ -6,10 +8,10 @@ function Header(){
         <h1 className="text-2xl p-2">shop</h1>
              <nav>
                 <ul className="flex flex-row justify-center items-center p-2 gap-3">
-                    <li><a href="/home">home</a></li>
-                    <li><a href="/about">about</a></li>
-                    <li><a href="#">product</a></li>
-                    <li><a href="#">contact</a></li>
+                    <li><Link to="/home">home</Link></li>
+                    <li><Link to="/about">about</Link></li>
+                    <li><Link to="/home">product</Link></li>
+                    <li><Link to="/contact">contact</Link></li>
                 </ul>
              </nav>
         </div>

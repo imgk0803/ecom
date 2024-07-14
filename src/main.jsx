@@ -9,6 +9,8 @@ import Root from './routes/root.jsx'
 import About from './routes/about.jsx'
 import './index.css'
 import Center from './routes/center.jsx'
+import Contact from './routes/contact.jsx'
+import Single from './routes/single.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         {
           path:'/',
           element : <Center/>
+        },
+        {
+          path:'/contact',
+          element : <Contact/>
+        },
+        {
+          path:'/product/:pid',
+          element : <Single/>
         },
       
 
