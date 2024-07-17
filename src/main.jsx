@@ -10,7 +10,8 @@ import About from './routes/about.jsx'
 import './index.css'
 import Center from './routes/center.jsx'
 import Contact from './routes/contact.jsx'
-import Single from './routes/single.jsx'
+import Single,{loader as singleLoader}from './routes/single.jsx'
+import Cart from './routes/cart.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,8 +36,13 @@ const router = createBrowserRouter([
         },
         {
           path:'/product/:pid',
-          element : <Single/>
+          element : <Single/>,
+          loader : singleLoader,
         },
+        {
+          path : '/cart',
+          element : <Cart/>
+        }
       
 
     ]
