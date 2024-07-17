@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import { useLoaderData , Link} from "react-router-dom";
+import { addTocart } from "../feature/cart/cartSlice";
 export async function loader({ params }) {
   const pid = params.pid
   const res = await axios.get(`http://localhost:3000/product/${pid}`)
@@ -9,6 +11,7 @@ export async function loader({ params }) {
 
 function Single(){
   const {product} = useLoaderData()
+  const dispatcher = useDispatch()
           return(
         <><section className="flex flex-col gap-2 p-2 h-screen">
                    <h2 className="text-center p-3">Happy Shopping</h2>
@@ -33,7 +36,7 @@ function Single(){
                    <span>(100k)</span>
                 </div>
               <span className="">${product.data.price}</span>
-               <Link to='/cart'><button className="text-start text-xs text-white w-16 border bg-black rounded-lg">add to cart</button></Link>
+              <button onClick={()=>dispatcher(addTocart(product))} className="text-center mt-10 text-xs text-white w-24 border bg-black rounded-lg h-6">add to cart</button>
               </div>
         </div>
       
