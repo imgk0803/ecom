@@ -1,10 +1,13 @@
-import { useSelector } from "react-redux"; 
+import { useSelector , useDispatch  } from "react-redux"; 
+import { addTocart, removeFromCart } from "../feature/cart/cartSlice";
 
 
 
 
 function Cart(){
     const items = useSelector((state)=> state.cart.items)
+    const dispatcher = useDispatch()
+  
 
     return(
         <>
@@ -15,18 +18,21 @@ function Cart(){
               <div className="flex flex-col gap-5">
                  {
                     items.map(product=>{
+                        
                         return(
-                            <div className="border border-slate-200 rounded-md p-3 text-sm">
+                        
+                             
+                            <div key={product._id} className="border border-slate-200 rounded-md p-3 text-sm">
                 <div className="row-span-3 flex flex-row items-center justify-evenly p-3 ">
-                   <img className="h-full w-20 object-cover object-center aspect-square" src={product.data.thumbnail} alt="" />
-                   <span>${product.data.price}</span>
+                   <img className="h-full w-20 object-cover object-center aspect-square" src={product.thumbnail} alt="" />
+                   <span>${product.price}</span>
                     <div className="flex flex-row justify-center items-center">
-                    <button className="bg-gray-950 text-white w-5">-</button>
-                   <span className="w-3">1</span>
-                   <button className="bg-gray-950 text-white w-5">+</button>
+                    <button onClick={()=>dispatcher(removeFromCart(product._id))}className="bg-gray-950 text-white w-5">-</button>
+                   <span className="w-5 p-1">{product.quantity}</span>
+                   <button onClick ={()=>dispatcher(addTocart(product))}className="bg-gray-950 text-white w-5">+</button>
                     </div>
                 </div>
-                <h3 className="pl-5">{product.data.description}</h3>
+                <h3 className="pl-5">{product.description}</h3>
                </div> 
                         )
                     })
@@ -36,7 +42,7 @@ function Cart(){
                  <section className="flex flex-col bg-slate-200 rounded-lg">
                     <div className="p-5">
                         <table className="border border-b-slate-700 border-dashed w-full table- gap-2  ">
-                            <th>Price Details</th>
+                          <th>Price Details</th>
                             <tr>
                                 <td>total MRP :</td>
                                 <td>$4992</td>

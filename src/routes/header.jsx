@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 function Header(){
     const items = useSelector((state) => state.cart.items)
+    const noi = items.reduce((count, item) => {
+        return count + item.quantity;
+    }, 0);
     
     return(
         <>
@@ -18,7 +21,7 @@ function Header(){
              </nav>
              <Link to="/cart" className="mx-10 flex flex-row"><span className="material-symbols-outlined ">
 shopping_bag
-</span><span className="flex items-start justify-start text-xs">{items.length}</span></Link>
+</span><span className="flex items-start justify-start text-xs">{noi}</span></Link>
         </div>
              
         </>
