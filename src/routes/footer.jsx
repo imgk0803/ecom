@@ -3,7 +3,7 @@ function Footer(){
         <>
             <footer className="flex flex-row justify-between items-center border border-t-black bg-black">
                 <div className="flex flex-col justify-center items-start p-3 text-white">
-                <span className="text-xl">shop pvt ltd</span>
+                <span className="text-xl">DEMOSHOP PVT LTD</span>
                  <p className="text-xs">All Rights Reserved.<br/>
                  Innovating the future, today.</p>
                 </div>
